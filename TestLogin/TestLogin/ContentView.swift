@@ -11,6 +11,7 @@ struct SignInView: View {
     @State private var email: String = ""
     @State private var pwd: String = ""
     @State private var confirmPwd: String = ""
+    
     @State private var ifPwdVisible: Bool = false
     @State private var ifConfirmPwdVisible: Bool = false
     @State private var emailValid: Bool = true
@@ -146,12 +147,11 @@ struct SignInView: View {
                 
                 NavigationLink(destination: SuccessView(), isActive: $showSuccessPage) {
                     Button(action: {
-                        // Validate the form fields
                         emailValid = ifEmailValid
                         pwdValid = ifPwdValid
                         pwdMatch = ifPwdMatch
                         
-                        if ifFormValid && emailValid && pwdValid && pwdMatch {
+                        if emailValid && pwdValid && pwdMatch {
                             showSuccessPage = true
                         }
                     }) {
